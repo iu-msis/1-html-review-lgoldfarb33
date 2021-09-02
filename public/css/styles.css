@@ -1,0 +1,17 @@
+body { 
+    background-color: rgb(170, 209, 209);
+    color: black;
+
+}
+a {
+    color: chocolate;
+}
+
+header {
+    background-color: gray;
+}
+ #Bio {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: xx-large;
+    font-weight: bolder;
+ }
