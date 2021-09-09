@@ -1,31 +1,83 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=5480574&assignment_repo_type=AssignmentRepo)
 
-# Instructions
-Fork and checkout the assignment repository. Create files as described below. Commit and push your changes. Make AT LEAST three substantive commits.
+# Overview
+Using the same content you submitted for Individual HW#1 (not necessarily the same repository), update your pages to (1)  run as a Docker container and (2) include sortable tables.
 
-In Canvas, submit a link to your GitHub repository.
+_**Link directly to the table page.**_ Your submission URL should look something like: `https://github.com/iu-msis/2-simple-docker-js-[username]/public/[table_file.html]`
 
-# Requirements
-* Repository should have at least three separate _**substantive**_ commits, showing different stages of progress. Each commit should have a useful message.
+### Which repository?
+You can copy the Docker config files from this repo to your old repository, or copy your `app` folder from your previous repo into this one, making any improvements you need. _(Yes, I know this isn't the best way to do version control.)_
 
-* Files are organized in a professional way. **You MUST use this folder structure.** All publicly visible files, including HTML files, exist in a folder named `/public`. CSS file(s) in a folder named 'css' (i.e., `/public/css`), Javascript files (if any) in a folder named 'js' (`/public/js`), image files in a folder named 'img' (`/public/img`), and all other files (if any, e.g., font files) in a folder named 'static' (`/public/static`).
+Make sure that you don't accidentally copy the `.git` folder over when moving files.
 
-* All files have web-appropriate names (no spaces; use dash or underscore), and appropriate extensions (`\*.htm`, `\*.html`, `\*.css`, etc.)
+Choose either, but submit the link to the repo you use.
 
-* Three separate HTML pages, including `index.html`. Home page MUST be named `index.htm` or `index.html` (Either extension is fine for HTML files.)
+### Folder structure
 
-* All pages have a common nav bar (on the top or left) that links the three pages. Pages use the same base style sheet(s), and have a common look and feel.
+Use an `app` folder; put your `public` folder inside the app folder.
 
-* One page shows user information (should be fake), showing name, country or origin, birthdate, age, email address (clickable `mailto:` link that opens an email browser!), and a (fake) profile picture of the (fake) user. See https://randomuser.me for examples.
+# Make a Docker container, use it
+Using the Docker config files in this repo, launch Docker and view your new web site. Practice this, as we'll be doing it often.
 
-* One page includes a table of books. Table MUST have at the following columns (title, author(s), year published, publisher, page count, MSRP) and at four to eight rows of data.
+## Using the command line
+As a reminder, use `cd` (**c**hange **d**irectory) to navigate, and `dir` (Windows) / `ls` (everything else) to view directory listings.
 
-* On the same page as your table of data, include a `<form>`suitable for adding rows to the table. (It doesn't need to *do* anything yet.) Include one input element for each column in the table. Use the appropriate input type. Format the form using an appropriate Bootstrap recipe.
+## Using Docker
+When in your project directory on the command line, you can use `docker-compose build` to build this docker image.
 
-* Use [Bootstrap (>= v4)][bootstrap] on all pages. On all pages, also include a custom style sheet that overrides *at least* the following Bootstrap defaults: background color, text color, header color, link color.
+After building, use `docker-compose up` from the project directory to run the container. (`ctrl-C` is one way to quit a running container.)
 
-* In your custom CSS file, also write at least one declaration for an element by CSS class and one declaration for an element by id. Use those elements in your pages.
+After running this image container, the web page should be visible at http://localhost:8080/
 
-* The pages should include at least two images (overall). Show the image thumbnails on the page. Link the thumbnails to larger versions of the same images. Include citation or attribution for each image. (This is _**NOT**_ `alt` text, and should be visible to anyone viewing the page.)
+The provided file `docker-compose.yml` maps the container's port 80 (default web port) to the host machine's (your machine's) port 8080 with the `ports` command.
 
-[bootstrap]:https://getbootstrap.com/docs/4.5/getting-started/introduction/
+The `volumes` command in `docker-compose.yml` maps your repository folder `app` to the container's `\srv\app\` folder. Changes made in one place will be made in the other. This means when you make changes to your HTML, CSS, or Javascript files that you won't have to rebuild your container.
+
+## Add a `.dockerignore` File
+Read the following [explanation of the `.dockerignore` file](https://blog.codeship.com/leveraging-the-dockerignore-file-to-create-smaller-images/)
+Create a `.dockerignore` file with at least the following. Be able to explain what each line does.
+
+```
+.*
+docker-compose.yml
+*.md
+```
+
+## Enter your container
+
+If you wish, you may enter your running container via the command line. First, you'll need to discover the hash of your container. `docker ps` lists all active containers. Copy the hash from your container, and replace it in the following command:
+
+```bash
+docker exec -it c0ee14f0c047 bash
+```
+
+The `-it` flag allows you to run an interactive `bash` session. `bash` is the name of the command line shell available in Docker images.
+
+Once inside, you can `ls` and `cd` to poke around. Try to find your document root! (Hint: it's where we copied files to.) When finished, exit `bash` with the `exit` command.
+
+
+# Make the table sortable.
+
+There are many public "sort table" scripts. For simplicity, I recommend using [this one](http://tristen.ca/tablesort/demo/). I've uploaded a short video showing how to do this. ("[03 Adding a sort table script.mp4](https://iu.mediaspace.kaltura.com/media/03+Adding+a+sort+table+script/1_9cd5rcdg)") If you use this script, you'll need to give your table a unique ID.
+
+## A simple Javascript
+
+Adding this script should be simple. Read the documentation of your chosen script for help.
+
+You may use any table sort script on the web. Here are two to get your search started:
+
+* http://tristen.ca/tablesort/demo/ (This one is used in the video linked above)
+* https://github.hubspot.com/sortable/docs/welcome/ (I think I like this one better.)
+
+The ideal script "just works", perhaps with simply adding only a class to your table. The less we have to configure in our code to connect to the library, the better off we are.
+
+## No errors
+Check the browser console before submitting to make sure you don't have any Javascript errors.
+
+## Sort with style
+Add any necessary CSS to make the sorting look good. (e.g., up/down arrows on the column headers). How you do this will depend on which table sort script you use. Whatever solution you pick, there should be some changes to your CSS file.
+
+# Correct any errors
+If you missed parts of HW#1, or receiving feedback telling you to change something, fix it now. Mention your change(s) in the submission comments on Canvas.
+
+# Submit
+Submit to Canvas the GitHub URL that points directly to the table page in your repository. _**Link directly to the table page.**_ It will help if you name that file `table.html`. (Remember you may need to fix your navbar links too.)
