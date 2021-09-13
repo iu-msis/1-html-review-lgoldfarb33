@@ -24,7 +24,10 @@
 
     </p>
     <h2> My favorite books!</h2>
-    <table> 
+    
+    
+    <table id="taskTable" class="table"> 
+        <thead> 
         <tr> 
             <th> Book Title </th>
             <th> Author(s) Name </th>
@@ -32,8 +35,10 @@
             <th> Publisher </th>
             <th> Page Count </th>
             <th> MSRP</th>
-        
+      
         </tr> 
+    </thead>
+    
         <tr> 
             <td>The Power of Now  </td>
             <td> Eckhart Tolle</td>
@@ -134,8 +139,13 @@
         </table>
         <input type="button" value="Add Book">
     </form>
-    <a target = "_blank"  href= "https://www.google.com/search?q=books&rlz=1C1JZAP_enUS880US880&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiW1PD0u-DyAhWdmGoFHeJfAgMQ_AUoAXoECAIQAw&biw=1536&bih=722#imgrc=giUHFMeuJRhmhM"> <img src="img/alfons-morales-YLSwjSy7stw-unsplash.jpg" alt="" /> </a>
-<p>https://www.google.com/search?q=books&rlz=1C1JZAP_enUS880US880&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiW1PD0u-DyAhWdmGoFHeJfAgMQ_AUoAXoECAIQAw&biw=1536&bih=722#imgrc=giUHFMeuJRhmhM</p>
-</body>
+        <a target = "_blank"  href= "https://www.google.com/search?q=books&rlz=1C1JZAP_enUS880US880&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiW1PD0u-DyAhWdmGoFHeJfAgMQ_AUoAXoECAIQAw&biw=1536&bih=722#imgrc=giUHFMeuJRhmhM"> <img src="img/alfons-morales-YLSwjSy7stw-unsplash.jpg" alt="" /> </a>
+        <p>https://www.google.com/search?q=books&rlz=1C1JZAP_enUS880US880&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiW1PD0u-DyAhWdmGoFHeJfAgMQ_AUoAXoECAIQAw&biw=1536&bih=722#imgrc=giUHFMeuJRhmhM</p>
+        <script src="js/tablesort.min.js"></script>
+        <script>
+            // Tabesort plugin from http://tristen.ca/tablesort/demo/ 
+            new Tablesort(document.getElementById('taskTable'));
+        </script>
+    </body>
 </html>
 
