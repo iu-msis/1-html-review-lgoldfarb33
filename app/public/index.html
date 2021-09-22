@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -32,13 +32,16 @@
   <h1 class="header"> {{person.name.first}} {{person.name.last}}</h1>
   <h2> Welcome to my personal site</h2>
 <h2> Contact Information: </h2>
-  
-    <h2> <img v-bind:src= "person.picture.large">  </h2>  
-    <h2> {{person.name.first}} {{person.name.last}} </h2>
-    <h2> <a href= "mailto: anita.snyder@example.com">   {{person.email}} </a> </h2>
-    <h2>Phone Number: {{person.phone}}</h2>
-    <h2>Birthdate: {{prettyBirthday}}</h2>
-    <h2>{{person.location.state}}, {{person.location.country}}</h2>
+  <form v-on:submit.prevent="fetchUserData">
+    <button type="submit">Reload</button>
+  </form>
+
+    <p> <img v-bind:src= "person.picture.large">  </p>  
+    <p> {{person.name.first}} {{person.name.last}} </p>
+    <p> <a href= "mailto: anita.snyder@example.com">   {{person.email}} </a> </p>
+    <p>Phone Number: {{person.phone}}</p>
+    <p>Birthdate: {{prettyBirthday}}</p>
+    <p>{{person.location.state}}, {{person.location.country}}</p>
   
  
  <h2 id = "Bio"> Biography</h2>
