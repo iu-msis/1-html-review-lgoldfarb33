@@ -1,7 +1,12 @@
 const Offer = {
     data() {
       return {
-        "person": {},
+        "person": {
+            name: {},
+            dob: {},
+            picture: {},
+            location:  {},
+        },
         "offers": [
                 {
                     "id": 1,
