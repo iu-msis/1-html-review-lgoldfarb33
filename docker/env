@@ -1,0 +1,4 @@
+MYSQL_DATABASE=msisHW
+MYSQL_HOST=database-2.cefmpyum9lin.us-east-2.rds.amazonaws.com
+MYSQL_USER=admin
+MYSQL_PASSWORD=Lg1122334455

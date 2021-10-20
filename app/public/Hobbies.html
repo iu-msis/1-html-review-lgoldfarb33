@@ -13,6 +13,7 @@
     <title>Anita Snyder Hobbies</title>
     
 </header>
+<div id = "bookApp">
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -45,115 +46,57 @@
         <thead> 
         <tr> 
             <th> Book Title </th>
-            <th> Author(s) Name </th>
-            <th> Year Published </th>
+            <th> Author(s) </th>
+            <th> Year Published</th>
             <th> Publisher </th>
             <th> Page Count </th>
             <th> MSRP</th>
       
         </tr> 
     </thead>
-    
-        <tr> 
-            <td>The Power of Now  </td>
-            <td> Eckhart Tolle</td>
-            <td> 1997 </td>
-            <td> Namestate Publishing </td>
-            <td> 236 </td>
-            <td>$18.00 </td>
-            
-        </tr> 
-        <tr> 
-            <td> Friday Forward: Inspiration & Motivation to End Your Week Stronger Than It Started </td>
-            <td>Robert Glazer </td>
-            <td>2020 </td>
-            <td> Simple Truths</td>
-            <td> 176 </td>
-            <td>$11.50 </td>
-            
-        </tr> 
-        <tr> 
-            <td> Good Company </td>
-            <td>Arthur M. Blank </td>
-            <td>2020 </td>
-            <td>William Morrow </td>
-            <td>272 </td>
-            <td>$15.69 </td>
-            
-        </tr> 
-        <tr> 
-            <td> The Future Is Faster Than You Think: How Converging Technologies Are Transforming Business, Industries, and Our Lives</td>
-            <td> Peter Diamandis and Steven Kotler </td>
-            <td> 2020</td>
-            <td> Simon & Schuster</td>
-            <td> 384</td>
-            <td> $17.60</td>
-            
-        </tr> 
-        <tr> 
-            <td>Million Dollar Habits </td>
-            <td>Brian Tracy </td>
-            <td> 1998</td>
-            <td>Entrepreneur Press </td>
-            <td> 293</td>
-            <td> $15.89</td>
-        </tr>
-    
-    </table>
-    <h3> Please add your favorit book to my list!</h3>
-    <form>
-        <table>
-            <tr>
-                <td>
-                     Book Title:
-                </td>
-                <td> 
-                    <input type="text" placeholder= "Book Title" title="">
-                </td>
+        <tbody>
+            <tr v-for="book in books">
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.pubYear }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.pageCount }}</td>
+                <td>{{ book.msrp }}</td>
             </tr>
-            <tr>
-                <td>
-                     Book Author(s):
-                </td>
-                <td> 
-                    <input type="text" placeholder= "Book Author(s)" Author(s)="">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Year Published:
-                </td>
-                <td>
-                    <input type="integer" placeholder="Year Published" year="">
-                </td>
-            </tr>
-            <tr>
-                <td> 
-                    Publisher: 
-                </td>
-                <td>
-                    <input type="text" placeholder="Publisher" Publisher="">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Pages:
-                </td>
-                <td>
-                    <input type="integer" placeholder="Pages" Pages="">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    MSRP:
-                </td>
-                <td>
-                    <input type="integer" placeholder="MSRP" year="">
-                </td>
-            </tr>
-        </table>
-        <input type="button" value="Add Book">
-    </form>
+        </tbody>
+      </table>
+    <h3> Please add your favorite book to my list!</h3>
+    <form v-on:submit.prevent="postNewBook">
+        <div class="form-group">
+          <label for="title" class="form-label">Book Title</label>
+          <input type="text" v-model="bookForm.title" class="form-control" id="title">
+        </div>
+        <div class="form-group">
+          <label for="author" class="form-label">Author</label>
+          <input type="text" v-model="bookForm.author" class="form-control" id="author">
+        </div>
+        <div class="form-group">
+          <label for="year" class="form-label">Year Published</label>
+          <input type="number" v-model="bookForm.year" class="form-control" id="year">
+        </div>
+        <div class="form-group">
+          <label for="publisher" class="form-label">Publisher</label>
+          <input type="text" v-model="bookForm.publisher" class="form-control" id="publisher">
+        </div>
+        <div class="form-group">
+          <label for="pageCount" class="form-label">Page Count</label>
+          <input type="text" v-model="bookForm.pageCount" class="form-control" id="pageCount">
+        </div>
+        <div class="form-group">
+          <label for="msrp" class="form-label">MSRP</label>
+          <input type="text" v-model="bookForm.msrp" class="form-control" id="msrp">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Book</button>
+      </form>
+
+      <script src="js/books.js"></script>
+
+
         <a target = "_blank"  href= "https://www.google.com/search?q=books&rlz=1C1JZAP_enUS880US880&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiW1PD0u-DyAhWdmGoFHeJfAgMQ_AUoAXoECAIQAw&biw=1536&bih=722#imgrc=giUHFMeuJRhmhM"> <img src="img/alfons-morales-YLSwjSy7stw-unsplash.jpg" alt="" /> </a>
         <p>https://www.google.com/search?q=books&rlz=1C1JZAP_enUS880US880&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiW1PD0u-DyAhWdmGoFHeJfAgMQ_AUoAXoECAIQAw&biw=1536&bih=722#imgrc=giUHFMeuJRhmhM</p>
         <script src="js/tablesort.min.js"></script>
@@ -162,6 +105,8 @@
             new Tablesort(document.getElementById('taskTable'));
         </script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    </body>
+    
+      </div>
+      </body>
 </html>
 
