@@ -31,17 +31,11 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO books (title, author, year, publisher, pageCount, msrp)
-  VALUES (?, ?, ?, ?, ?, ?)'
+  'DELETE FROM books WHERE id = ?'
 );
 
 $stmt->execute([
-  $_POST['title'],
-  $_POST['author'],
-  $_POST['year'],
-  $_POST['publisher'],
-  $_POST['pageCount'],
-  $_POST['msrp']
+  $_POST['id']
 ]);
 
 // Get auto-generated PK from DB
@@ -51,6 +45,5 @@ $stmt->execute([
 // Step 4: Output
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
-
 header('HTTP/1.1 303 See Other');
 header('Location: ../book/index.php');
